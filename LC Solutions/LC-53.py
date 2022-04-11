@@ -9,14 +9,15 @@ def maxSubArray(nums):
     """
     total = 0
     temp = 0
+    max = nums[0]
     for dig in nums:
+        if dig > max:
+            max = dig
         temp += dig
         if temp > total:
             total = temp
         elif temp <0:
             temp = 0
+    if total == 0:
+        return max
     return total
-
-listshey = [[-2,1,-3,4,-1,2,1,-5,4], [1], [5,4,-1,7,8]]
-for lsit in listshey:
-    print(maxSubArray(lsit))
