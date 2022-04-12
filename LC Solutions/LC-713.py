@@ -8,24 +8,21 @@ def numSubarrayProductLessThanK(nums: list[int], k: int) -> int:
     """
     count = 0
     total = 1
-    for r in range(len(nums)):
+    for r in range(0,len(nums)):
         total *= nums[r]
-        #print(total, nums[:r])
         for l in range(r):
-            total//= nums[l]
-            print(r, l, nums[l:r], total)
-
+            print(nums[l:r], total, total<k, count)
             if total < k:
                 count += 1
-        if total < k:
-            print(total, r)
-            count += 1
+            else:
+                total = total//nums[l]
             
-        #print("ciount", count)
-    return count, "answered"
+            print(l,r)
+    return count
 
 lzit = []
-lzit.append(([1,2,3], 6)) #4
+lzit.append(([10,5,2,6], 100)) #8
+#lzit.append(([1,2,3], 6)) #4
 #lzit.append(([1,2,3,4,5,6], 6)) #5 + 1 = 6
 #lzit.append(([1,2,3,4,5,6], 35)) #6 + 5 + 2 + 1 = 14
 #lzit.append(([1,2,3,4,5,6], 10)) #6 + 2 + 1 = 9
